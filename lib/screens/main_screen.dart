@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ungdungdulich/app_icons.dart';
 import 'home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,7 +12,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     const Center(child: Text('Khám phá')),
-    const Center(child: Text('Đặt phòng')),];
+    const Center(child: Text('Đặt phòng')),
+    const Center(child: Text('Profile')),];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -28,9 +30,10 @@ class _MainScreenState extends State<MainScreen> {
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Trang chủ'),
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Khám phá'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(AppIcons.houseChimney), label: 'Trang chủ'),
+          BottomNavigationBarItem(icon: Icon(AppIcons.discover), label: 'Khám phá'),
+          BottomNavigationBarItem(icon: Icon(AppIcons.reservationTable), label: 'Đặt phòng'),
+          BottomNavigationBarItem(icon: Icon(AppIcons.userPen), label: 'Profile'),
         ],
       ),
     );
