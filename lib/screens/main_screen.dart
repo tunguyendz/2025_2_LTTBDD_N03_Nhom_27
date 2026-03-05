@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ungdungdulich/app_icons.dart';
+import 'package:flutter_ungdungdulich/screens/profile.dart';
 import 'home_screen.dart';
+import 'package:flutter_ungdungdulich/translations/apptext.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -9,11 +11,14 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  final List<Widget> _screens = [
-    HomeScreen(),
-    const Center(child: Text('Khám phá')),
-    const Center(child: Text('Đặt phòng')),
-    const Center(child: Text('Profile')),];
+  bool isVietnamese = true; // Biến để theo dõi ngôn ngữ hiện tại
+
+  void onTap() {
+    setState(() {
+      isVietnamese = !isVietnamese; // Đổi ngôn ngữ
+    });
+  }
+  
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -21,6 +26,15 @@ class _MainScreenState extends State<MainScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _screens = [
+    HomeScreen(
+      isVietnamese: isVietnamese, 
+      onTap: onTap,
+    ),
+    const Center(child: Text('Khám phá')),
+    const Center(child: Text('Đặt phòng')),
+    ProfileScreen(),];
+    final lang = isVietnamese ? AppTexts.vi : AppTexts.en;
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -29,11 +43,11 @@ class _MainScreenState extends State<MainScreen> {
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(AppIcons.houseChimney), label: 'Trang chủ'),
-          BottomNavigationBarItem(icon: Icon(AppIcons.discover), label: 'Khám phá'),
-          BottomNavigationBarItem(icon: Icon(AppIcons.reservationTable), label: 'Đặt phòng'),
-          BottomNavigationBarItem(icon: Icon(AppIcons.userPen), label: 'Profile'),
+        items: [
+          BottomNavigationBarItem(icon: const Icon(AppIcons.houseChimney), label: lang['home']!),
+          BottomNavigationBarItem(icon: const Icon(AppIcons.discover), label: lang['discover']!),
+          BottomNavigationBarItem(icon: const Icon(AppIcons.reservationTable), label: lang['booking']!),
+          BottomNavigationBarItem(icon: const Icon(AppIcons.userPen), label: lang['profile']!),
         ],
       ),
     );
