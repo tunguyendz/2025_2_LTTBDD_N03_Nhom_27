@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ungdungdulich/list_screens/All.dart';
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
 
@@ -6,6 +7,15 @@ class DiscoverScreen extends StatefulWidget {
   State<DiscoverScreen> createState() => _DiscoverScreenState();
 }
 class _DiscoverScreenState extends State<DiscoverScreen> {
+  int selectedIndex = 0;
+  final List<String> categories = ['All', 'Hà Nội', 'Đà Nẵng', 'Hồ Chí Minh', 'Huế', 'Hội An', 'Nha Trang', 'Phú Quốc'];
+  final List<Widget> categoryContents = [
+    const AllScreen(),
+    const Center(child: Text('Địa điểm du lịch bãi biển')),
+    const Center(child: Text('Địa điểm du lịch núi')),
+    const Center(child: Text('Địa điểm du lịch thành phố')),
+    const Center(child: Text('Địa điểm du lịch di tích')),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +31,10 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           ],
         )
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
+      body: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: Column(
+          children: [
           Row(
             children: [
               Expanded(
@@ -77,9 +88,42 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               )
             ],
           ),
+           const SizedBox(height: 20),
+  SizedBox(
+  height: 40,
+  child: ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: categories.length,
+    itemBuilder: (context, index) {
+      bool dangDuocChon = (index == selectedIndex); 
+
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            selectedIndex = index; // LỆNH ĐỔI KÊNH LÀ ĐÂY!
+          });
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(right: 23),
+          child: Text(
+            categories[index], // In cái tên ra (All, Asia...)
+            style: TextStyle(
+              fontSize: 16,
+              // TƯ DUY 3: Đổi màu dựa vào biến dangDuocChon
+              color: dangDuocChon ? Colors.greenAccent : Colors.grey,
+              fontWeight: dangDuocChon ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ),
+      );
+    },
+  ),
+)
+          ,
           const SizedBox(height: 20),
-          
-        ],
+          Expanded(child: categoryContents[selectedIndex],) // HIỂN THỊ NỘI DUNG DỰA VÀO selectedIndex
+          ],
+        ),
       ),
     );
   }
