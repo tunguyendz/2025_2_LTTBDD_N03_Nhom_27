@@ -4,12 +4,12 @@ class TravelCard extends StatelessWidget {
   final String location;
   final String imagePath;
 
-  TravelCard({required this.name, required this.location, required this.imagePath});
+  const TravelCard({super.key, required this.name, required this.location, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20), 
+      margin: EdgeInsets.all(15), 
       
       // 2. Trang trí cái hộp
     decoration: BoxDecoration(
@@ -24,8 +24,7 @@ class TravelCard extends StatelessWidget {
         ),
       ],
     ),
-    
-    // 3. QUAN TRỌNG: Dùng ClipRRect để cắt những phần thừa của ảnh
+
     child: ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Column(
@@ -45,10 +44,10 @@ class TravelCard extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5),
+                    color: const Color.fromARGB(255, 75, 75, 75).withOpacity(0.3), // Nền đen mờ
                     borderRadius: BorderRadius.circular(8)
                   ),
-                  child: Text(name, style: TextStyle(color: Colors.white)),
+                  child: Text(name, style: TextStyle(color: const Color.fromARGB(255, 252, 252, 252))),
                 ),
               ),
             ],

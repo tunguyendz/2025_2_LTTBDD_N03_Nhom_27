@@ -7,10 +7,10 @@ class HomeScreen extends StatefulWidget {
 
   // 2. Bắt buộc phải có trong hàm khởi tạo (Constructor)
   const HomeScreen({
-    Key? key,
+    super.key,
     required this.isVietnamese,
     required this.onTap,
-  }) : super(key: key);
+  });
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Row(children: [
             const CircleAvatar(
-              backgroundImage: AssetImage('assets/imgs/avatar.png'),
+              backgroundImage: AssetImage('assets/imgs/hinhnen.png'),
             ),
             const SizedBox(width: 10),
             Text(lang['hello']!,
@@ -66,7 +66,35 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(width: 16), // Khoảng cách giữa nút ngôn ngữ và chuông
           
           // NÚT CHUÔNG THÔNG BÁO
-          const Icon(Icons.notifications_none, size: 28, color: Colors.black87),
+          Stack(
+            children: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none,size: 28,)),
+              Positioned(
+                right: 5,
+                top: 5,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2)
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 16,
+                    minHeight: 16,
+                  ),
+                  child: const Text(
+                    '3', // Số lượng thông báo chưa đọc
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              )
+            ],
+          )
             ],
           )
 
