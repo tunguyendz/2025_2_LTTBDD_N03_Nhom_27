@@ -11,7 +11,6 @@ class TravelCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(15), 
       
-      // 2. Trang trí cái hộp
     decoration: BoxDecoration(
       color: Colors.white, // Nền trắng
       borderRadius: BorderRadius.circular(20), // Bo góc 20

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ungdungdulich/widgets/TravelCard.dart';
-class AllScreen extends StatefulWidget {
-  const AllScreen({super.key});
+class PhuQuocScreen extends StatefulWidget {
+  const PhuQuocScreen({super.key});
 
   @override
-  State<AllScreen> createState() => _AllScreenState();
+  State<PhuQuocScreen> createState() => _PhuQuocScreenState();
 }
-class _AllScreenState extends State<AllScreen> {
+class _PhuQuocScreenState extends State<PhuQuocScreen> {
 
   @override
   Widget build(BuildContext context) {
