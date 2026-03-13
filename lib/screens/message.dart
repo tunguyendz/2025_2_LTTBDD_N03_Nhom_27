@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ungdungdulich/translations/apptext.dart';
+import 'package:flutter_ungdungdulich/widgets/SlowRoll.dart';
 
 // ===== MÀN HÌNH TIN NHẮN =====
 // Hiển thị danh sách các cuộc trò chuyện với hướng dẫn viên, khách sạn, tour...
@@ -50,6 +51,7 @@ class _MassageScreenState extends State<MassageScreen> {
       
       // ===== DANH SÁCH TIN NHẮN =====
       body: ListView.separated(
+        physics: const SlowScrollPhysics(),
         itemCount: danhSachTroChuyen.length, // Số lượng cuộc trò chuyện
         separatorBuilder: (_, __) => Divider(height: 1, indent: 80), // Đường kẻ phân cách
         itemBuilder: (context, viTri) {

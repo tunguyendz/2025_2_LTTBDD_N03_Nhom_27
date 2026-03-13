@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ungdungdulich/widgets/SlowRoll.dart';
 import 'package:flutter_ungdungdulich/list_screens/All.dart';
 import 'package:flutter_ungdungdulich/list_screens/DaLat.dart';
 import 'package:flutter_ungdungdulich/list_screens/DaNang.dart';
@@ -128,6 +129,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
             SizedBox(
               height: 40,
               child: ListView.builder(
+                physics: const SlowScrollPhysics(),
                 scrollDirection: Axis.horizontal, // Cuộn ngang
                 itemCount: danhSachDanhMuc.length,
                 itemBuilder: (context, viTri) {

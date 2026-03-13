@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ungdungdulich/screens/noti.dart';
 import 'package:flutter_ungdungdulich/widgets/TravelCard.dart';
 import 'package:flutter_ungdungdulich/translations/apptext.dart';
+import 'package:flutter_ungdungdulich/widgets/SlowRoll.dart';
 
 // ===== MÀN HÌNH TRANG CHỦ =====
 // Hiển thị danh sách các địa điểm du lịch hot nhất
@@ -127,6 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // ===== NỘI DUNG CHÍNH =====
       body: ListView(
+        physics: const SlowScrollPhysics(),
         padding: EdgeInsets.all(20),
         children: [
           // Tiêu đề danh sách địa điểm

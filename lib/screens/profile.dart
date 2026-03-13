@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import'package:flutter_ungdungdulich/widgets/profile.dart';
 import 'package:flutter_ungdungdulich/translations/apptext.dart';
+import 'package:flutter_ungdungdulich/widgets/SlowRoll.dart';
 
 // ===== MÀN HÌNH TÀI KHOẢN =====
 // Hiển thị thông tin cá nhân của người dùng
@@ -27,6 +28,7 @@ class ProfileScreen extends StatelessWidget {
       
       // ===== NỘI DUNG CHÍNH =====
       body: ListView(
+        physics: const SlowScrollPhysics(),
         padding: const EdgeInsets.all(40),
         children: [
           // ===== ẢNH ĐẠI DIỆN =====
